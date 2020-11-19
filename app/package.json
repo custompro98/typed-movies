@@ -1,7 +1,8 @@
 {
-  "name": "typescript-sample",
+  "name": "pocket-typed",
   "version": "1.0.0",
-  "description": "A repo serving as a typescript template",
+  "description": "A Typescript version of Pocket-Rails",
+  "repository": "github.com/custompro98/pocket-typed",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -26,5 +27,9 @@
     "ts-jest": "^26.4.4",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.5"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^20.0.2",
+    "@types/hapi__hapi": "^20.0.2"
   }
 }

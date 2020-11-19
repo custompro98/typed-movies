@@ -1,7 +1,11 @@
-const world = 'world'
+import app from './app'
 
-function hello(word: string = world): string {
-    return `Hello ${word}!`
-}
+(async () => {
+    const server = await app.init()
+    console.log(`Server is now running on ${server.info.uri}`)
+})()
 
-console.log(hello('docker'))
+process.on('unhandledRejection', (err: Error) => {
+    console.log(err, err.stack)
+    process.exit(1)
+})
