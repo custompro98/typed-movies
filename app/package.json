@@ -1,8 +1,8 @@
 {
-  "name": "pocket-typed",
+  "name": "typed-movies",
   "version": "1.0.0",
-  "description": "A Typescript version of Pocket-Rails",
-  "repository": "github.com/custompro98/pocket-typed",
+  "description": "A Typescript API to record watched movies",
+  "repository": "github.com/custompro98/typed-movies",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
