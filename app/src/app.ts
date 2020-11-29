@@ -7,6 +7,14 @@ const init = async (): Promise<Hapi.Server> => {
         port: config.web.port,
     })
 
+    server.route({
+        method: 'GET',
+        path: '/status',
+        handler: () => ({
+            status: 'success',
+        }),
+    })
+
     await server.start()
 
     return server
