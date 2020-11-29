@@ -4,8 +4,22 @@ on:
       - main
 name: Deploy to Heroku
 jobs:
-  release:
+  test:
+    name: Run tests on Docker image
     runs-on: ubuntu-latest
+    env:
+      COMPOSE_FILE: docker-compose.yml
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: build
+      run: docker-compose build
+    - name: test
+      run: docker-compose run ci
+  release:
+    name: Build and push the image
+    runs-on: ubuntu-latest
+    needs: test
     steps:
     - uses: actions/checkout@master
     - name: login

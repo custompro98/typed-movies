@@ -16,12 +16,14 @@ services:
     volumes:
       - ./app:/app
       - /app/node_modules
-  test:
+  ci:
     extends: "app"
     build:
         context: .
         target: "build"
     command: ["npm", "test"]
+  test:
+    extends: "ci"
     volumes:
       - ./app:/app
       - /app/node_modules
