@@ -7,6 +7,7 @@ describe('init', () => {
     it('instantiates a server object', async () => {
         jest.spyOn(Hapi, 'server')
             .mockImplementationOnce(() => ({
+                route: () => {},
                 start: () => {},
             } as unknown as Hapi.Server))
 
@@ -22,11 +23,26 @@ describe('init', () => {
         const startMock = jest.fn()
         jest.spyOn(Hapi, 'server')
             .mockImplementationOnce(() => ({
+                route: () => {},
                 start: startMock,
             } as unknown as Hapi.Server))
 
         await app.init()
 
         expect(startMock).toHaveBeenCalled()
+    })
+
+    it('mounts the routes', async () => {
+        const mountMock = jest.fn()
+
+        jest.spyOn(Hapi, 'server')
+            .mockImplementationOnce(() => ({
+                route: mountMock,
+                start: () => {},
+            } as unknown as Hapi.Server))
+
+        await app.init()
+
+        expect(mountMock).toHaveBeenCalled()
     })
 })
